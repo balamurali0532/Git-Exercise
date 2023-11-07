@@ -9,6 +9,9 @@ jobs:
       - setup_remote_docker:
           version: 19.03.13
       - run:
+          name: Install Docker client
+          command: apt-get update && apt-get install -y docker-ce-cli
+      - run:
           name: Build Docker Image
           command: docker build -t $DOCKERHUB_USERNAME/myapp:${CIRCLE_SHA1} .
       - run:
