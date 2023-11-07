@@ -10,7 +10,7 @@ jobs:
           version: 19.03.13
       - run:
           name: Install Docker client
-          command: apt-get update && apt-get install -y docker-ce docker-ce-cli
+          command: apt-get update && apt-get install -y docker-ce-cli:amd64
       - run:
           name: Build Docker Image
           command: docker build -t $DOCKERHUB_USERNAME/myapp:${CIRCLE_SHA1} .
