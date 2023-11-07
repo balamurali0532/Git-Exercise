@@ -9,22 +9,14 @@ jobs:
       - setup_remote_docker:
           version: 19.03.13
       - run:
-          name: Install Docker client
-          command: |
-            apt-get update
-            apt-get install -y docker-ce-cli
-      - run:
           name: Build Docker Image
-          command: |
-            docker build -t $DOCKERHUB_USERNAME/myapp:${CIRCLE_SHA1} .
+          command: docker build -t $DOCKERHUB_USERNAME/myapp:${CIRCLE_SHA1} .
       - run:
           name: Authenticate with Docker Hub
-          command: |
-            echo "$DOCKERHUB_PASS" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+          command: echo "$DOCKERHUB_PASS" | docker login --username $DOCKERHUB_USERNAME --password-stdin
       - run:
           name: Push Docker Image to Docker Hub
-          command: |
-            docker push $DOCKERHUB_USERNAME/myapp:${CIRCLE_SHA1}
+          command: docker push $DOCKERHUB_USERNAME/myapp:${CIRCLE_SHA1}
 workflows:
     version: 2
     build_and_deploy:
