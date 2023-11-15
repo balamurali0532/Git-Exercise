@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-These is the file 1
-=======
-this is feature 1 file
->>>>>>> feature_dev1
